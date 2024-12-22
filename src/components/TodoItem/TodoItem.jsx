@@ -9,7 +9,6 @@ const checkedCss = css`
   color: #B5B5BA;
   text-decoration: line-through;
 `
-//перенос строки
 const Title = styled.span(props => {
   return `
     width: 40%;
@@ -30,8 +29,6 @@ const Delete = styled.span`
   cursor: pointer;
 `;
 
-// на иконку удаления повесить обработчки который будет вызыывать конфирм 
-//если конфирм тру то вызываем удаление по айди, айди надо прокинуть снаружи
 export const TodoItem = ({id, title, checked, itemPriority}) => {
   const {mutate: deleteMutate} = useDeleteTodoItem();
   const { mutate: checkMutate } = useCheckTodoItem();
@@ -67,5 +64,3 @@ export const TodoItem = ({id, title, checked, itemPriority}) => {
     </TodoItemContainer>
   )
 }
-
-//содержит сам элемент

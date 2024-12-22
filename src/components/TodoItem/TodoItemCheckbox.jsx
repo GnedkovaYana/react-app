@@ -28,7 +28,6 @@ export const CheckboxContainer = styled.span(props => {
   `;
 });
 
-//прокинуть снаружи прокс, типа
 
 export const TodoItemCheckbox = ({disabled, checked, onCheck}) => {
   return <CheckboxContainer disabled={disabled} checked={checked} onClick={onCheck}/>

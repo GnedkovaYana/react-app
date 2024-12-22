@@ -1,12 +1,8 @@
-//слой отвечающий за данные
-
 const TODO_ITEMS_LOCAL_STORAGE_KEY = 'TODO_ITEMS_LOCAL_STORAGE_KEY'; 
-//Эта константа используется как ключ для хранения и извлечения данных из localStorage. 
-//localStorage — это объект, который позволяет хранить данные в браузере.
 
-export const LocalStorage = { //Этот объект содержит методы для работы с localStorage.
-  getTodoItemsFromLocalStorage: () => {    //Этот метод возвращает Promise, который через 500 миллисекунд (0.5 секунды) попытается извлечь данные из localStorage.
-    return new Promise((resolve, reject) => { //ассинхронный вызов кода
+export const LocalStorage = {
+  getTodoItemsFromLocalStorage: () => {   
+    return new Promise((resolve, reject) => { 
       setTimeout(() => {
         
       const rawData = localStorage.getItem(TODO_ITEMS_LOCAL_STORAGE_KEY);
@@ -22,14 +18,14 @@ export const LocalStorage = { //Этот объект содержит мето�
           return;
         }
     
-        resolve(data); //необходимо вызывать resolve или reject, чтобы завершить ассинхронную функцию
+        resolve(data); 
       }, 100);  
     })
   },
 
    
 
-  saveTodoItemToLocalStorage: (todoItem) => {   //Этот метод также возвращает Promise и используется для сохранения нового элемента в localStorage.
+  saveTodoItemToLocalStorage: (todoItem) => { 
     return new Promise((resolve, reject) => {
       LocalStorage.getTodoItemsFromLocalStorage().then((todoItems) => {
         const newTodoItems = [...todoItems, todoItem];
@@ -39,15 +35,7 @@ export const LocalStorage = { //Этот объект содержит мето�
     });
   },
 
-  //getTodoItemsFromLocalStorage: Извлекает список задач из localStorage.
-//saveTodoItemToLocalStorage: Сохраняет новую задачу в localStorage.
-
-  //метод
   deleteTodoItemFromLocalStorage: (todoItemId) => {
-    //получить массив элементов
-      //сделать фильтр по элементам ч/з фильтр у массива, оставить только нужные элементы
-       // Сохранить отфильтрованный список в localStorage
-       
        return new Promise((resolve, reject) => {
         LocalStorage.getTodoItemsFromLocalStorage().then((todoItems) => {
           const deleteTodoItems =  todoItems.filter(item => item.id !== todoItemId);
@@ -58,10 +46,6 @@ export const LocalStorage = { //Этот объект содержит мето�
   },
 
   checkTodoItemLocalStorage: (id, checked) => {
- //получить массив элементов
-      //найти нужный элемент поставить ему чек, 
-       // Сохранить  в localStorage
-       
        return new Promise((resolve, reject) => {
         LocalStorage.getTodoItemsFromLocalStorage().then((todoItems) => {
           const checkedTodoItems = todoItems.map(item =>
